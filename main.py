@@ -123,7 +123,7 @@ def merge_best(graph, df, a, verbose=False):
 
 if __name__ == "__main__":
     # get a set of data points
-    df = pd.read_csv('two_squares.csv', delimiter=' ', header=None, names=['x', 'y'])
+    df = pd.read_csv('./datasets/two_squares.csv', delimiter=' ', header=None, names=['x', 'y'])
     
     # create knn graph
     graph = knn_graph(df, 6)
