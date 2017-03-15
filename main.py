@@ -41,7 +41,7 @@ def part_graph(graph, k, df=None):
     edgecuts, parts = metis.part_graph(graph, k)
     for i, p in enumerate(graph.nodes()):
         graph.node[p]['cluster'] = parts[i]
-    if df:
+    if df is not None:
         df['cluster'] = nx.get_node_attributes(graph, 'cluster').values()
     return graph
 
