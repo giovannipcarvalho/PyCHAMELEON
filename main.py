@@ -50,16 +50,52 @@ def empty_graph_copy(graph):
 
 def get_cluster(graph, c_colors):
     nodes = [n for n in graph.node if graph.node[n]['color'] in c_colors]
-    return graph.subgraph(nodes)
+    # return graph.subgraph(nodes)
+    return nodes
 
-def internal_interconnectivity(graph):
-    # average weight of minimum cut edges
-    edges = nx.minimum_edge_cut(graph)
-    weights = [graph[edge[0]][edge[1]]['weight'] for edge in edges]
-    return np.mean(weights)
+def connecting_edges(partitions, graph):
+    cut_set = []
+    for a in partitions[0]:
+        for b in partitions[1]:
+            if a in graph:
+                if b in graph[a]:
+                    cut_set.append((a, b))
+    return cut_set
 
-def internal_closeness(graph):
-    pass
+def min_cut_bisector(graph):
+    partitions = nx.algorithms.community.kernighan_lin_bisection(graph)
+    return connecting_edges(partitions, graph)
+
+def get_weights(graph, edges):
+    return [graph[edge[0]][edge[1]]['weight'] for edge in edges]
+
+def bisection_weights(graph, cluster):
+    cluster = graph.subgraph(cluster)
+    edges = min_cut_bisector(cluster)
+    weights = get_weights(cluster, edges)
+    return weights
+
+def internal_interconnectivity(graph, cluster):
+    return np.sum(bisection_weights(graph, cluster))
+
+def relative_interconnectivity(graph, cluster_i, cluster_j):
+    edges = connecting_edges((cluster_i, cluster_j), graph)
+    EC = np.sum(get_weights(graph, edges))
+    ECci, ECcj = internal_interconnectivity(graph, cluster_i), internal_interconnectivity(graph, cluster_j)
+    return EC / ((ECci + ECcj) / 2.0)
+
+def internal_closeness(graph, cluster):
+    cluster = graph.subgraph(cluster)
+    edges = cluster.edges()
+    weights = get_weights(cluster, edges)
+    return np.sum(weights)
+
+def relative_closeness(graph, cluster_i, cluster_j):
+    edges = connecting_edges((cluster_i, cluster_j), graph)
+    SEC = np.mean(get_weights(graph, edges))
+    Ci, Cj = internal_closeness(graph, cluster_i), internal_closeness(graph, cluster_j)
+    SECci, SECcj = np.mean(bisection_weights(graph, cluster_i)), np.mean(bisection_weights(graph, cluster_j))
+    return SEC / ((Ci / (Ci + Cj) * SECci) + (Cj / (Ci + Cj) * SECcj))
 
 if __name__ == "__main__":
     # get a set of data points
