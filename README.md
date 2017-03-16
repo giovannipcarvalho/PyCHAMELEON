@@ -21,7 +21,7 @@ tar -zxvf metis-5.1.0.tar.gz
 cd metis-5.1.0
 make config shared=1
 make install
-export METIS_DLL=/usr/local/bin/libmetis.dylib
+export METIS_DLL=/usr/local/lib/libmetis.dylib
 ```
 
 3. Run sample code
