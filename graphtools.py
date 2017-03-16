@@ -1,15 +1,18 @@
 import numpy as np
 import networkx as nx
+from tqdm import tqdm
 
 import metis
 
 def euclidean_distance(a, b):
     return np.linalg.norm(np.array(a) - np.array(b))
 
-def knn_graph(df, k):
+def knn_graph(df, k, verbose=False):
     points = [p[1:] for p in df.itertuples()]
     g = nx.Graph()
-    for i, p in enumerate(points):
+    if verbose: print "Building kNN graph (k = %d)" % (k)
+    iterpoints = tqdm(enumerate(points), total=len(points)) if verbose else enumerate(points)
+    for i, p in iterpoints:
         distances = map(lambda x: euclidean_distance(p, x), points)
         closests = np.argsort(distances)[1:k+1] # second trough kth closest
         for c in closests:

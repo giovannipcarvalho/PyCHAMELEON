@@ -8,7 +8,7 @@ if __name__ == "__main__":
     df = pd.read_csv('./datasets/two_squares.csv', delimiter=' ', header=None, names=['x', 'y'])
     
     # create knn graph
-    graph = knn_graph(df, 6)
+    graph = knn_graph(df, 6, verbose=True)
 
     # partition graph
     graph = part_graph(graph, 6, df)
