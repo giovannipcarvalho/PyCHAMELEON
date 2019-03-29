@@ -4,6 +4,8 @@ Python 2.7 implementation of the clustering algorithm CHAMELEON[1].
 
 Depends on METIS for Python.
 
+Consider checking out https://github.com/Moonpuck/chameleon_cluster for an improved Python3 version.
+
 ## Installing (MacOS instructions)
 
 1. Install requirements.
