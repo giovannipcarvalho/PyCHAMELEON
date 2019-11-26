@@ -1,5 +1,7 @@
 # PyCHAMELEON
 
+All rights are reserved to the origional author, this implementation is strictly for educational purposes.   
+
 Python 2.7 implementation of the clustering algorithm CHAMELEON[1].
 
 Depends on METIS for Python.
