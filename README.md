@@ -8,7 +8,7 @@ Depends on METIS for Python.
 
 Consider checking out https://github.com/Moonpuck/chameleon_cluster for an improved Python3 version.
 
-## Installing (MacOS instructions)
+## Installing (modified linux instructions)
 
 1. Install requirements.
 
@@ -19,13 +19,13 @@ pip install -r requirements.txt
 2. Install METIS
 
 ```
-brew install cmake
+sudo apt-get install cmake
 curl -O http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz
 tar -zxvf metis-5.1.0.tar.gz
 cd metis-5.1.0
 make config shared=1
-make install
-export METIS_DLL=/usr/local/lib/libmetis.dylib
+sudo make install
+export METIS_DLL=/usr/local/lib/libmetis.so
 ```
 
 3. Run sample code
