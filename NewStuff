@@ -21,7 +21,7 @@ def makeClusterList(graph,clusters):
                 if verbose: print "Better than: %f" % (max_score)
                 max_score = ms
                 ci, cj = clusters[i], clusters[j]
-    
+  """
     for i in range(len(clusters))
         j=i+1
         for j in range(len(clusters)) 
@@ -32,3 +32,4 @@ def makeClusterList(graph,clusters):
                 if verbose: print "Better than: %f" % (max_score)
                 max_score = ms
                 ci, cj = clusters[i], clusters[j]
+   """
