@@ -30,6 +30,7 @@ def part_graph(graph, k, df=None):
 
 def get_cluster(graph, clusters):
     nodes = [n for n in graph.node if graph.node[n]['cluster'] in clusters]
+    print nodes 
     return nodes
 
 def connecting_edges(partitions, graph):
