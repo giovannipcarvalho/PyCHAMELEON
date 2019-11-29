@@ -32,7 +32,7 @@ def merge_best(graph, df, a, verbose=False):
     clusters = np.unique(df['cluster'])
     max_score = 0
     ci, cj = -1, -1
-    
+    """
     listToTraverse = [ [] ] * len(clusters)
     for i in range(len(clusters)):
         listToTraverse[i] = get_cluster(graph,[i])
@@ -60,7 +60,7 @@ def merge_best(graph, df, a, verbose=False):
                 if verbose: print "Better than: %f" % (max_score)
                 max_score = ms
                 ci, cj = i, j
-    """
+    
     if max_score > 0:
         if verbose: print "Merging c%d and c%d" % (ci, cj)
         df.loc[df['cluster'] == cj, 'cluster'] = ci
