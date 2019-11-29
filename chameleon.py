@@ -37,7 +37,7 @@ def merge_best(graph, df, a, verbose=False):
     for i in range(len(clusters)):
         listToTraverse[i] = get_cluster(graph,[i])
         
-     for i in range(len(clusters))
+    for i in range(len(clusters))
         j=i+1
         while( j < (len(clusters)) 
             if verbose: print "Checking c%d c%d" % (i, j)
