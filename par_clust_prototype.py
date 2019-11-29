@@ -15,9 +15,16 @@ def makeClusterList(graph,clusters):
     
     #creating the function the gpu is going to use
     func = SourceModule("""
-    __global__ void getGraphGpu(float *nodes , float *graph , float *cluster)
+    __global__ void getGraphGpu(float *nodes, int nodes_length, float *graph, int graph_length, float *clusters, int clusters_length)
     {
          nodes = [n for n in graph.node if graph.node[n]['cluster'] in clusters]
+         
+         n = 0;
+         
+         for (i = 0; i < graph_length; i++)
+            for( j = 0; j < clusters_length; j++)
+                if ( graph[i] == clusters[j] )
+                    nodes[n] = graph[i]
     }
     """)
     
