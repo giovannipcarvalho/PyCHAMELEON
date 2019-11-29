@@ -47,7 +47,7 @@ def merge_best(graph, df, a, verbose=False):
                 if verbose: print "Better than: %f" % (max_score)
                 max_score = ms
                 ci, cj = clusters[i], clusters[j]
-            J+=1  
+            j+=1  
     
     """
     for combination in itertools.combinations(clusters, 2):
