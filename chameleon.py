@@ -33,7 +33,7 @@ def merge_best(graph, df, a, verbose=False):
     max_score = 0
     ci, cj = -1, -1
     
-    listToTraverse = []
+    listToTraverse = [ [] ] * len(clusters)
     for i in range(len(clusters)):
         listToTraverse[i] = get_cluster(graph,[i])
         
