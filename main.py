@@ -2,6 +2,7 @@ import pandas as pd
 
 from visualization import *
 from chameleon import *
+from pycuda import *
 
 if __name__ == "__main__":
     # get a set of data points
