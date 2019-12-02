@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     # partition graph
     graph = part_graph(graph, 6, df)
-    graph._graph
+    #graph._graph
     reverse_view(graph)
     
     # merge clusters
