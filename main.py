@@ -12,6 +12,7 @@ if __name__ == "__main__":
 
     # partition graph
     graph = part_graph(graph, 6, df)
+    print graph 
     
     # merge clusters
     while merge_best(graph, df, 1, verbose=True):
