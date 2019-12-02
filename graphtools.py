@@ -30,16 +30,21 @@ def part_graph(graph, k, df=None):
 
 def get_cluster(graph, clusters):
     nodes = [n for n in graph.node if graph.node[n]['cluster'] in clusters]
-    print nodes 
+    #print nodes 
     return nodes
 
 def connecting_edges(partitions, graph):
+    print graph
+    cluster_i = 0
+    cluster_j = 1
     cut_set = []
-    for a in partitions[0]:
-        for b in partitions[1]:
-            if a in graph:
-                if b in graph[a]:
-                    cut_set.append((a, b))
+    for first_cluster in partitions[cluster_i]:
+        for second_cluster in partitions[cluster_j]:
+            if first_cluster in graph:
+                if second_cluster in graph[first_cluster]:
+                    cut_set.append((first_cluster, second_cluster))
+    #            else 
+    #                cut_set[first_cluster * second_cluster] = -1
     return cut_set
 
 def min_cut_bisector(graph):
