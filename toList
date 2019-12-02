@@ -1,0 +1,5 @@
+def toList (graph):
+    theList=[ ]* graph.node
+    for i in enumerate(graph.node):
+        theList[i]= graph.node[i]['pos
+    return theList
