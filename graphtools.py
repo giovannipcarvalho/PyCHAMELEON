@@ -34,17 +34,39 @@ def get_cluster(graph, clusters):
     return nodes
 
 def connecting_edges(partitions, graph):
-    print graph
     cluster_i = 0
     cluster_j = 1
     cut_set = []
+    
+    """
+    //needs size of return set 
+    int[] return_cluster;
+    int return_set = 0;
+    
+    int[] first_cluster;
+    int[] second_cluster;
+    
+    int first_node_set = second_node_set = 0;
+    
+    int first_cluster_length;
+    int second_cluster_length;
+    
+    for(; first_node_set < first_cluster_length; first_node_set++)
+        {
+            for(; second_node_set < second_cluster_length; second_node_set++)
+                if(first_cluster[first_node_set] == second_cluster[second_node_set])
+                {
+                    return_cluster[return_set] = first_cluster[first_node_set];
+                    return_set++;
+                }    
+        }
+    """
+    
     for first_cluster in partitions[cluster_i]:
         for second_cluster in partitions[cluster_j]:
             if first_cluster in graph:
                 if second_cluster in graph[first_cluster]:
                     cut_set.append((first_cluster, second_cluster))
-    #            else 
-    #                cut_set[first_cluster * second_cluster] = -1
     return cut_set
 
 def min_cut_bisector(graph):
