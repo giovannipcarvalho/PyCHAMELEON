@@ -2,6 +2,7 @@ import pandas as pd
 
 from visualization import *
 from chameleon import *
+from pycuda import *
 
 if __name__ == "__main__":
     # get a set of data points
@@ -12,7 +13,7 @@ if __name__ == "__main__":
 
     # partition graph
     graph = part_graph(graph, 6, df)
-    
+
     # merge clusters
     while merge_best(graph, df, 1, verbose=True):
         plot_data(df)

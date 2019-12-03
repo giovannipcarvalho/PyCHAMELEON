@@ -5,3 +5,4 @@ seaborn
 matplotlib
 metis
 tqdm
+pycuda
